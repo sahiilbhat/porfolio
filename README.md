@@ -10,7 +10,7 @@ Next.js 14 (App Router, TypeScript) portfolio styled like a 2004 open-world clas
 
 ## Where to edit things
 
-- **data/profile.ts** — ONE file for most content: name, email/phone,
+- **data/profile.ts** — ONE fil for most content: name, email/phone,
   body fat %, Messi fallback totals, map locations, social links (a few
   are placeholders — put your real URLs in).
 - **app/*/page.tsx** — page copy (about, experience bullets, missions, stats numbers).
