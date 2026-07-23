@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Pricedown — the authentic Grand Theft Auto logo typeface (free for commercial use) */
+@font-face {
+  font-family: "Pricedown";
+  src: url("./fonts/pricedown.otf") format("opentype");
+  font-weight: 400 900;
+  font-display: swap;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem; /* offset for sticky nav on anchor jumps */
+  }
+  body {
+    @apply bg-ink text-sand font-body;
+    min-height: 100%;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  /* page scrollbar */
+  body::-webkit-scrollbar {
+    width: 10px;
+  }
+  body::-webkit-scrollbar-track {
+    background: #0c0a07;
+  }
+  body::-webkit-scrollbar-thumb {
+    background: #3a2f1c;
+    border: 2px solid #0c0a07;
+  }
+  body::-webkit-scrollbar-thumb:hover {
+    background: #b39a67;
+  }
+}
+
+@layer components {
+  /* Reusable dark card used across pages */
+  .card {
+    @apply border-2 border-sand-dim/35 bg-black/35 backdrop-blur-[2px];
+  }
+  .card-hover {
+    @apply transition-all duration-200 ease-out hover:-translate-y-0.5 hover:border-gold hover:bg-gold/10 hover:shadow-[0_8px_24px_-6px_rgba(0,0,0,0.6)] focus-visible:-translate-y-0.5 focus-visible:border-gold focus-visible:bg-gold/10 focus-visible:outline-none;
+  }
+  /* Staggered entrance for lists — set --i on each child */
+  .stagger > * {
+    animation: fadeInUp 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    animation-delay: calc(var(--i, 0) * 60ms);
+  }
+  .chip {
+    @apply border-2 border-sand-dim bg-black/35 px-3 py-1 text-xs uppercase tracking-[0.12em];
+  }
+  /* Ghost button (back / quit actions) */
+  .btn-ghost {
+    @apply cursor-pointer border-2 border-sand-dim bg-black/40 px-4 py-2 text-sm font-semibold uppercase tracking-[0.12em] text-sand transition-colors hover:bg-sand hover:text-black focus-visible:bg-sand focus-visible:text-black focus-visible:outline-none;
+  }
+  /* Section subheading rule */
+  .subhead {
+    @apply mb-2 border-b border-sand/25 pb-1 text-sm font-bold uppercase tracking-[0.16em] text-rust;
+  }
+}
+
+@layer utilities {
+  /* Chunky GTA-style text outline + drop shadow */
+  .text-stroke {
+    -webkit-text-stroke: 2px #000;
+    text-shadow: 4px 4px 0 #000;
+  }
+  .text-stroke-sm {
+    -webkit-text-stroke: 1px #000;
+    text-shadow: 2px 2px 0 #000;
+  }
+  .glow-sand {
+    text-shadow: 0 0 14px rgba(232, 214, 167, 0.35), 2px 2px 0 #000;
+  }
+  /* Animated film grain */
+  .grain-tex {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='160' height='160' filter='url(%23n)' opacity='0.7'/></svg>");
+  }
+}
+
+/* Body-level option toggles (set from lib/game.tsx) */
+body.nograin .grain-layer {
+  display: none;
+}
+body:not(.trails) .glow-sand {
+  text-shadow: 2px 2px 0 #000;
+}
+body:not(.subs) #subs {
+  display: none;
+}
+
+/* Thin scrollbars inside scrolling panels */
+.scroll-thin {
+  scrollbar-width: thin;
+  scrollbar-color: #b39a67 transparent;
+}
+.scroll-thin::-webkit-scrollbar {
+  width: 8px;
+}
+.scroll-thin::-webkit-scrollbar-thumb {
+  background: #b39a67;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
