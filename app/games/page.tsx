@@ -1,30 +1,35 @@
 "use client";
 
 import { useState } from "react";
-import HorseRace from "@/components/games/HorseRace";
+// HorseRace intentionally disabled — remove this comment and the matching
+// selector entry below only if the horse game is ever brought back.
+// import HorseRace from "@/components/games/HorseRace";
 import Wordle from "@/components/games/Wordle";
 import RockPaperScissors from "@/components/games/RockPaperScissors";
+import ReactionTest from "@/components/games/ReactionTest";
+import HigherLower from "@/components/games/HigherLower";
+import TypingTest from "@/components/games/TypingTest";
 import { sMove, sSelect } from "@/lib/sfx";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
 const GAMES = [
-  { id: "horse", name: "Inside Track", sub: "Horse betting", Comp: HorseRace },
+  // { id: "horse", name: "Inside Track", sub: "Horse betting", Comp: HorseRace },
   { id: "wordle", name: "Wordle", sub: "Word puzzle", Comp: Wordle },
+  { id: "typing", name: "Typing Test", sub: "Words per minute", Comp: TypingTest },
+  { id: "reaction", name: "Reaction Test", sub: "How fast are you?", Comp: ReactionTest },
+  { id: "hilo", name: "Higher / Lower", sub: "Guess the number", Comp: HigherLower },
   { id: "rps", name: "Rock Paper Scissors", sub: "vs CPU", Comp: RockPaperScissors },
 ];
 
 export default function GamesPage() {
-  const [active, setActive] = useState("horse");
+  const [active, setActive] = useState("wordle");
   const Active = GAMES.find((g) => g.id === active)!.Comp;
 
   return (
     <main className="relative z-10 mx-auto max-w-5xl px-4 pb-24 pt-24 sm:px-8 sm:pt-28">
       <p className="mb-1 text-xs font-bold uppercase tracking-[0.3em] text-rust">Arcade</p>
-      <h1
-        className="font-script text-4xl font-normal leading-tight text-[#d6def5] sm:text-6xl"
-        style={{ textShadow: "2px 3px 0 rgba(0,0,0,0.85), 0 0 22px rgba(150,170,255,0.18)" }}
-      >
+      <h1 className="font-script text-4xl font-normal leading-tight text-[#d6def5] sm:text-6xl">
         Games
       </h1>
       <div className="mt-4 h-[3px] w-16 bg-gradient-to-r from-gold to-transparent" />

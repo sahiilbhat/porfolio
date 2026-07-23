@@ -82,7 +82,7 @@ export default function Nav() {
               </li>
             );
           })}
-          {/* <li>
+         {/* <li>
             <a
               href={`${basePath}/games/`}
               onMouseEnter={sMove}
@@ -101,3 +101,4 @@ export default function Nav() {
     </header>
   );
 }
+ 

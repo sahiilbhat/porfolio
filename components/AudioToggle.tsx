@@ -16,7 +16,7 @@ export default function AudioToggle() {
   useEffect(() => {
     const a = new Audio(`${basePath}/audio/theme.mp3`);
     a.loop = true;
-    a.volume = 0.7;
+    a.volume = 0.1;
     a.preload = "auto";
     audioRef.current = a;
     return () => {

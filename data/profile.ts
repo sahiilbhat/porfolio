@@ -8,6 +8,7 @@ export const profile = {
   email: "sahilb911@gmail.com",
   phone: "+916006127768",
   phoneDisplay: "+91 6006127768",
+  resumeUrl: "https://drive.usercontent.google.com/download?id=1q4BXfr_RKJ25WjJuybCZdmdeBUeNKsib&export=download&confirm=t",
 
   /* Shown on the RANDOM STATS page. SA had a FAT stat; now you do too. */
   bodyFatPercent: 18,

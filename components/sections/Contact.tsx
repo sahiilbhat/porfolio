@@ -5,6 +5,8 @@ import { profile, socials } from "@/data/profile";
 import { sMove, sSelect } from "@/lib/sfx";
 import Section from "./Section";
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
 export default function Contact() {
   return (
     <Section id="contact" kicker="Get in touch" title="Let's build something">
@@ -57,8 +59,18 @@ export default function Contact() {
         </Reveal>
       </div>
 
-      <footer className="mt-20 border-t border-sand-dim/20 pt-6 text-center text-xs uppercase tracking-[0.15em] text-sand-dim">
-        {profile.name.first} {profile.name.last}
+      <footer className="mt-20 flex flex-col items-center gap-2 border-t border-sand-dim/20 pt-6 text-center text-xs uppercase tracking-[0.15em] text-sand-dim">
+        <span>
+          {profile.name.first} {profile.name.last}
+        </span>
+        <a
+          href={`${basePath}/games/`}
+          onMouseEnter={sMove}
+          onClick={sSelect}
+          className="text-[0.65rem] tracking-[0.2em] text-sand-dim/60 transition-colors hover:text-gold"
+        >
+          ▸ Arcade
+        </a>
       </footer>
     </Section>
   );

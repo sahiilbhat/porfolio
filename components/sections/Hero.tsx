@@ -44,6 +44,16 @@ export default function Hero() {
           >
             Get in touch
           </a>
+          <a
+            href={profile.resumeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={sSelect}
+            className="btn-ghost inline-flex items-center gap-2 px-6 py-3"
+          >
+            Download résumé
+            <span aria-hidden="true">↓</span>
+          </a>
         </div>
       </div>
 
