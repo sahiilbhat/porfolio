@@ -1,5 +1,5 @@
 import Reveal from "@/components/Reveal";
-import { skillGroups } from "@/data/profile";
+import { skillDocs, skillGroups } from "@/data/profile";
 import Section from "./Section";
 
 export default function Skills() {
@@ -13,12 +13,17 @@ export default function Skills() {
             </h3>
             <div className="flex flex-wrap gap-2">
               {g.items.map((s) => (
-                <span
+                <a
                   key={s}
+                  href={skillDocs[s]}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`${s} documentation (opens in a new tab)`}
+                  title={`Open ${s} documentation`}
                   className="border border-sand-dim/40 bg-black/30 px-2.5 py-1 text-[0.82rem] font-medium tracking-wide text-sand transition-colors hover:border-gold hover:text-paper"
                 >
                   {s}
-                </span>
+                </a>
               ))}
             </div>
           </Reveal>
